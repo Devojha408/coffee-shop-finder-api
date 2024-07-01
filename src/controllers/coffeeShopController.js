@@ -3,7 +3,35 @@ const CoffeeShop = require('../models/CoffeeShop');
 // Get all coffee shops
 const getCoffeeShops = async (req, res) => {
     try {
-        const coffeeShops = await CoffeeShop.find();
+        const { query, sort } = req.query;
+        let filter = {};
+
+        // Handle text search query
+        if (query) {
+            filter = {
+                $text: { $search: query }
+            };
+        }
+
+        let sortOption = { rating: -1 }; // Default sorting by rating descending
+
+        // Handle sorting option
+        if (sort) {
+            switch (sort) {
+                case 'rating_asc':
+                    sortOption = { rating: 1 };
+                    break;
+                // Add more cases for other sorting options as needed
+                default:
+                    sortOption = { rating: -1 };
+                    break;
+            }
+        }
+
+        const coffeeShops = await CoffeeShop.find(filter)
+            .sort(sortOption)
+            .exec();
+
         res.status(200).json(coffeeShops);
     } catch (error) {
         res.status(500).json({ message: error.message });

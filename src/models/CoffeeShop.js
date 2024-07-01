@@ -18,6 +18,14 @@ const CoffeeShopSchema = new mongoose.Schema({
     products: [ProductSchema],
 });
 
+// Index definition
+CoffeeShopSchema.index({
+    name: 'text',
+    location: 'text',
+    'products.name': 'text',
+    rating: 1, // 1 for ascending, -1 for descending
+});
+
 const CoffeeShop = mongoose.model('CoffeeShop', CoffeeShopSchema);
 
 module.exports = CoffeeShop;
