@@ -8,6 +8,7 @@ This is the backend service for the Coffee Shop Finder App. It provides RESTful 
 
 - 🌐 RESTful APIs to manage coffee shop data
 - 📜 Endpoints for accessing product listings per coffee shop
+- 🔍 Advanced search and sorting powered by MongoDB Atlas Search
 - 💾 MongoDB for data storage
 - 🔓 CORS enabled for cross-origin requests
 
@@ -58,7 +59,7 @@ This is the backend service for the Coffee Shop Finder App. It provides RESTful 
 
 2. **API Endpoints:**
 
-    - `GET /api/coffeeshops`: Retrieve all coffee shops
+    - `GET /api/coffeeshops`: Retrieve all coffee shops (supports advanced query and sorting powered by MongoDB Atlas Search)
     - `GET /api/coffeeshops/:id`: Retrieve a single coffee shop by ID
     - `POST /api/coffeeshops`: Create a new coffee shop
     - `PUT /api/coffeeshops/:id`: Update a coffee shop by ID
@@ -101,5 +102,9 @@ This project is licensed under the MIT License.
 
 - Node.js
 - Express.js
-- MongoDB
+- MongoDB 
 - AWS
+
+### Backend Repo URL: https://github.com/Devojha408/coffee-shop-finder-gui
+
+You're now ready to start using the Coffee Shop Finder app! ☕🚀
